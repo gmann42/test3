@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "0290eac7-ec09-475d-9176-9a130833d325",
-		"name": "Push notification API",
+		"name": "test-3-Push notification API",
 		"description": "# 🔔 Get started here\n\nThis collection template is a blueprint demonstrating the core features of a push notification REST API, like channels, devices, and notifications. You can use this template as inspiration to build your custom API or extend it to work with one you've already started working on.\n\n## 🔖 How to use this template?\n\n#### Step 1: Send the requests\n\nSend the requests and view the response returned by the mock API, or check out the examples included.\n\n#### **Step 2: Update the base URL**\n\nSelect the collection and navigate to the Variables tab. Update the `base_url` variable with your API's URL.\n\n#### **Step 3: Customize the requests**\n\nUpdate the different requests to suit your use case, including the request body, authorization, documentation, headers, tests, and path parameters.\n\n#### **Step 4: Continue building the collection**\n\nCreate requests in this collection to test the new API endpoints you develop.\n\n## ℹ️ Resources\n\n[Building requests](https://learning.postman.com/docs/sending-requests/requests/)  \n[Authorizing requests](https://learning.postman.com/docs/sending-requests/authorization/)  \n[Using variables](https://learning.postman.com/docs/sending-requests/variables/)  \n[Creating your first collection](https://learning.postman.com/docs/getting-started/creating-the-first-collection/)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
