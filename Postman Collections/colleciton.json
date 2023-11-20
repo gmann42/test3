@@ -1,0 +1,965 @@
+{
+	"info": {
+		"_postman_id": "0290eac7-ec09-475d-9176-9a130833d325",
+		"name": "Push notification API",
+		"description": "# 🔔 Get started here\n\nThis collection template is a blueprint demonstrating the core features of a push notification REST API, like channels, devices, and notifications. You can use this template as inspiration to build your custom API or extend it to work with one you've already started working on.\n\n## 🔖 How to use this template?\n\n#### Step 1: Send the requests\n\nSend the requests and view the response returned by the mock API, or check out the examples included.\n\n#### **Step 2: Update the base URL**\n\nSelect the collection and navigate to the Variables tab. Update the `base_url` variable with your API's URL.\n\n#### **Step 3: Customize the requests**\n\nUpdate the different requests to suit your use case, including the request body, authorization, documentation, headers, tests, and path parameters.\n\n#### **Step 4: Continue building the collection**\n\nCreate requests in this collection to test the new API endpoints you develop.\n\n## ℹ️ Resources\n\n[Building requests](https://learning.postman.com/docs/sending-requests/requests/)  \n[Authorizing requests](https://learning.postman.com/docs/sending-requests/authorization/)  \n[Using variables](https://learning.postman.com/docs/sending-requests/variables/)  \n[Creating your first collection](https://learning.postman.com/docs/getting-started/creating-the-first-collection/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Channels",
+			"item": [
+				{
+					"name": "Create channel",
+					"id": "895685d3-fbd3-4ad3-af99-57525d67c695",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"weather alerts\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/channels",
+						"description": "Create a new notification channel."
+					},
+					"response": [
+						{
+							"id": "bcbdaf36-9238-4f7b-bf5b-0a87a4dcc940",
+							"name": "Create channel",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"weather alerts\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/channels"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"abc-123\",\n    \"name\": \"weather alerts\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete channel",
+					"id": "5a3c8b9e-039d-4a9c-97b3-b43f5bfaf838",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/channels/:channelId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"channels",
+								":channelId"
+							],
+							"variable": [
+								{
+									"id": "b534d6ed-add5-4e54-a0f5-10c8aae2ad9b",
+									"key": "channelId",
+									"value": "abc-123"
+								}
+							]
+						},
+						"description": "Delete a notification channel."
+					},
+					"response": [
+						{
+							"id": "1f937ec0-cc2f-415d-84f7-bb09bdc594bc",
+							"name": "Delete channel",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/channels/:channelId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"channels",
+										":channelId"
+									],
+									"variable": [
+										{
+											"key": "channelId",
+											"value": "abc-123"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"abc-123\",\n    \"name\": \"weather alerts\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Subscribe user to channel",
+					"id": "f73a1bf5-5da4-4a46-9082-fbf1855f0412",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"def-456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/channels/:channelId/subscribers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"channels",
+								":channelId",
+								"subscribers"
+							],
+							"variable": [
+								{
+									"id": "3160423e-75e9-4d7d-8bec-ce804ca45fcf",
+									"key": "channelId",
+									"value": "abc-123"
+								}
+							]
+						},
+						"description": "When a user is subscribed to a notification channel, they will receive all notifications published to that channel."
+					},
+					"response": [
+						{
+							"id": "2e9fbf2e-dfc3-402e-bf5b-abb11b3e985e",
+							"name": "Subscribe user to channel",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"def-456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/channels/:channelId/subscribers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"channels",
+										":channelId",
+										"subscribers"
+									],
+									"variable": [
+										{
+											"key": "channelId",
+											"value": "abc-123"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"channelId\": \"abc-123\",\n    \"userId\": \"def-456\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Unsubscribe user from channel",
+					"id": "727dca13-b3f8-4a56-a282-7ed47e92fde2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/channels/:channelId/subscribers/:userId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"channels",
+								":channelId",
+								"subscribers",
+								":userId"
+							],
+							"variable": [
+								{
+									"id": "7a6f162c-ea58-4cf7-9248-3b7170c34a2f",
+									"key": "channelId",
+									"value": "abc-123"
+								},
+								{
+									"id": "a1d1cca1-7f84-4629-af74-834c2ff78444",
+									"key": "userId",
+									"value": "def-456"
+								}
+							]
+						},
+						"description": "Unsubscribe a user from a notification channel to stop receiving notifications published to that channel."
+					},
+					"response": [
+						{
+							"id": "7494b2e3-48c4-4bf3-a0ae-54584d90c48b",
+							"name": "Unsubscribe user from channel",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/channels/:channelId/subscribers/:userId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"channels",
+										":channelId",
+										"subscribers",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "channelId",
+											"value": "abc-123"
+										},
+										{
+											"key": "userId",
+											"value": "def-456"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"channelId\": \"abc-123\",\n    \"userId\": \"def-456\"\n}"
+						}
+					]
+				}
+			],
+			"id": "bb3600cf-23e3-457a-9008-b8e7e8d0aac7",
+			"description": "A channel represents a category of notifications (for example a weather app may have a channel for severe weather alerts).\n\nUsers can subscribe to individual notification channels. When a notification is published to a channel, all users subscribed to that channel will receive notifications to their registered devices."
+		},
+		{
+			"name": "Devices",
+			"item": [
+				{
+					"name": "Create device",
+					"id": "cfaab21c-eab3-4cf6-b464-2d474b1a3eea",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"browser\",\n    \"subType\": \"Firefox\",\n    \"name\": \"Firefox - Mark's PC\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/users/:userId/devices",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								":userId",
+								"devices"
+							],
+							"variable": [
+								{
+									"id": "3d04235e-1e1c-44f0-a126-972c373a22da",
+									"key": "userId",
+									"value": "def-456"
+								}
+							]
+						},
+						"description": "Register a new device to the given user. Different device types may be supported such as cell phones, browsers, and desktop apps."
+					},
+					"response": [
+						{
+							"id": "96fa3825-e673-4023-bc16-0a1816c07c5a",
+							"name": "Create mobile device",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"mobile\",\n    \"subType\": \"iPhone\",\n    \"name\": \"Jen's iPhone\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/:userId/devices",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"devices"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "def-456"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"xyz-789\",\n    \"type\": \"mobile\",\n    \"subType\": \"iPhone\",\n    \"name\": \"Jen's iPhone\"\n}"
+						},
+						{
+							"id": "ea95e174-0d41-4bef-a92a-2774cfbc608e",
+							"name": "Create browser device",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"type\": \"browser\",\n    \"subType\": \"Firefox\",\n    \"name\": \"Firefox - Mark's PC\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/users/:userId/devices",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"devices"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "def-456"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"xyz-789\",\n    \"type\": \"browser\",\n    \"subType\": \"Firefox\",\n    \"name\": \"Firefox - Mark's PC\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete device",
+					"id": "f5572e64-1f1c-45ce-b4ee-5f4a75a19b80",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/:userId/devices/:deviceId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								":userId",
+								"devices",
+								":deviceId"
+							],
+							"variable": [
+								{
+									"id": "634072d7-7604-41ac-8dec-15980f99cb0f",
+									"key": "userId",
+									"value": "def-456"
+								},
+								{
+									"id": "3dc3c5c8-0ed3-4f77-b076-4c1a3d03300b",
+									"key": "deviceId",
+									"value": "xyz-789"
+								}
+							]
+						},
+						"description": "Remove a device previously registered to the given user."
+					},
+					"response": [
+						{
+							"id": "45955c86-d294-40d8-ae3f-2c97ddaee92d",
+							"name": "Delete device",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/users/:userId/devices/:deviceId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users",
+										":userId",
+										"devices",
+										":deviceId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "def-456"
+										},
+										{
+											"key": "deviceId",
+											"value": "xyz-789"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"xyz-789\",\n    \"type\": \"mobile\",\n    \"subType\": \"iPhone\",\n    \"name\": \"Jen's iPhone\"\n}"
+						}
+					]
+				}
+			],
+			"id": "7394be7b-1ca4-4fa4-9415-adefa4ff5b26",
+			"description": "A user can have multiple devices registered to their account. Each of these devices will receive notifications published to channels the user is subscribed to or directly to the user. Notifications can also be published directly to a specific device, typically for testing purposes."
+		},
+		{
+			"name": "Notifications",
+			"item": [
+				{
+					"name": "Publish notification",
+					"id": "1b8ebd49-ce27-4ab2-a717-7496177b61ef",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"target\": {\n        \"type\": \"channel\",\n        \"id\": \"abc-123\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"issue_at\": \"2023-06-05T22:16:18Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/notifications",
+						"description": "Publish a notification.\n\nThe `target` field allows notifications to be published to a channel (ie. all devices owned by all users subscribed to that channel), an individual user (ie. all devices owned by that user), or a single device.\n\nIncluding the `issue_at` field will schedule the notification to be published at the given time. Excluding the `issue_at` field will publish the notification immediately.\n\nThe response will include an `issued` field indicating whether the notification has been immediately published.\n\nThe response will include an `id` which can be used to cancel a scheduled notification."
+					},
+					"response": [
+						{
+							"id": "a2876840-5cf8-4c4e-93c3-a602e254589a",
+							"name": "Publish to channel immediately",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"target\": {\n        \"type\": \"channel\",\n        \"id\": \"abc-123\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/notifications"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"zyx-098\",\n    \"target\": {\n        \"type\": \"channel\",\n        \"id\": \"abc-123\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"published\": true\n}"
+						},
+						{
+							"id": "3ccda1a6-175c-4c35-8723-10d9db5dcb6e",
+							"name": "Publish to channel in future",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"target\": {\n        \"type\": \"channel\",\n        \"id\": \"abc-123\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"issue_at\": \"2023-06-05T22:16:18Z\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/notifications"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"zyx-098\",\n    \"target\": {\n        \"type\": \"channel\",\n        \"id\": \"abc-123\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"issue_at\": \"2023-06-05T22:16:18Z\",\n    \"published\": false\n}"
+						},
+						{
+							"id": "59ce5f55-11ec-4da1-9da5-b90db8d6734f",
+							"name": "Publish to user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"target\": {\n        \"type\": \"user\",\n        \"id\": \"def-456\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/notifications"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"zyx-098\",\n    \"target\": {\n        \"type\": \"user\",\n        \"id\": \"def-456\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"published\": true\n}"
+						},
+						{
+							"id": "2404a5c5-94bd-4842-be5d-e391e78b1ec4",
+							"name": "Publish to device",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"target\": {\n        \"type\": \"device\",\n        \"id\": \"xyz-789\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/notifications"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"zyx-098\",\n    \"target\": {\n        \"type\": \"device\",\n        \"id\": \"xyz-789\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"published\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Cancel scheduled notification",
+					"id": "cf3f8a0d-4eed-4d27-8da1-6091ac911273",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/:notificationId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								":notificationId"
+							],
+							"variable": [
+								{
+									"id": "6db13eae-b5cc-4e1f-b8ce-8ec1ad818747",
+									"key": "notificationId",
+									"value": "zyx-098"
+								}
+							]
+						},
+						"description": "Cancel a notification which was scheduled for the future using the `issue_at` field."
+					},
+					"response": [
+						{
+							"id": "78b0f7dd-7dba-48f7-8e84-7a1b255d44f4",
+							"name": "Cancel scheduled notification",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/notifications/:notificationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notifications",
+										":notificationId"
+									],
+									"variable": [
+										{
+											"key": "notificationId",
+											"value": "zyx-098"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"zyx-098\",\n    \"target\": {\n        \"type\": \"user\",\n        \"id\": \"def-456\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"published\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Get notification and stats",
+					"id": "a5a6eebb-f1b6-4ab1-a015-f2b3d3d2ff7f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/notifications/:notificationId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications",
+								":notificationId"
+							],
+							"variable": [
+								{
+									"id": "08c3002e-0d08-4b22-b62f-757381f0d3d0",
+									"key": "notificationId",
+									"value": "zyx-098"
+								}
+							]
+						},
+						"description": "View data about a notification including its content, target, published status, and the number of notifications sent, delivered, and opened on individual devices."
+					},
+					"response": [
+						{
+							"id": "57f8931b-8ab7-4935-bed3-3e135191212e",
+							"name": "Get notification & stats",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/notifications/:notificationId",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notifications",
+										":notificationId"
+									],
+									"variable": [
+										{
+											"key": "notificationId",
+											"value": "zyx-098"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"id\": \"zyx-098\",\n    \"target\": {\n        \"type\": \"channel\",\n        \"id\": \"abc-123\"\n    },\n    \"notification\": {\n        \"title\": \"Update available\",\n        \"body\": \"A new update is available\"\n    },\n    \"published\": true,\n    \"stats\": {\n        \"sent\": 1024,\n        \"delivered\": 902,\n        \"opened\": 114\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List notifications",
+					"id": "60ccf8db-8aec-49f5-bbfc-5ca207b996e8",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/notifications?limit=10&targetType=channel&targetId=abc-123",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"notifications"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "targetType",
+									"value": "channel"
+								},
+								{
+									"key": "targetId",
+									"value": "abc-123"
+								}
+							]
+						},
+						"description": "List sent notifications. You can filter this list with the target type and ID, eg. `targetType=channel&targetId=abc-123` to return only notifications sent to a channel with the ID `abc-123`, or `targetType=device` to return all notifications targeted to individual devices regardless of ID."
+					},
+					"response": [
+						{
+							"id": "e3303032-5570-42e2-9230-e5275318a1fd",
+							"name": "List notifications",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/notifications?limit=1&targetType=channel&targetId=abc-123",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"notifications"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "targetType",
+											"value": "channel"
+										},
+										{
+											"key": "targetId",
+											"value": "abc-123"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": \"zyx-098\",\n        \"target\": {\n            \"type\": \"channel\",\n            \"id\": \"abc-123\"\n        },\n        \"notification\": {\n            \"title\": \"Update available\",\n            \"body\": \"A new update is available\"\n        },\n        \"published\": true\n    }\n]"
+						}
+					]
+				}
+			],
+			"id": "797b547f-60f6-4a2e-bffa-8b2f3f6b79ae",
+			"description": "Requests for publishing and cancelling notifications. Notifications can be published immediately or at a scheduled time in the future, and can be published to a channel, user, or device."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "73145305-e6df-4941-847d-e2770ab2216d",
+			"key": "base_url",
+			"value": "https://d94e0858-c230-4251-9714-4ecb0c3eafa8.mock.pstmn.io",
+			"type": "string"
+		}
+	]
+}
